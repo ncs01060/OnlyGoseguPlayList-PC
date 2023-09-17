@@ -1,6 +1,8 @@
 <template>
   <div class="footerDiv">
     <footer>
+      <img src="../assets/img/volume.svg" />
+      <input type="range" min="0" max="1" step="0.01" v-model="music.volume" @input="setVolume()" />
       <button @click="playPreviousSong" :disabled="currentSongIndex <= 0">
         <img src="../assets/img/backword.svg" />
       </button>
@@ -11,6 +13,7 @@
       <button @click="playNextSong" :disabled="currentSongIndex >= playlist.length - 1">
         <img src="../assets/img/forword.svg" />
       </button>
+
       <audio
         ref="audioPlayer"
         controls
@@ -30,17 +33,60 @@
 import song1 from '../assets/song/1.mp3'
 import song2 from '../assets/song/2.mp3'
 import song3 from '../assets/song/3.mp3'
+import song4 from '../assets/song/4.mp3'
+import song5 from '../assets/song/5.mp3'
+import song6 from '../assets/song/6.mp3'
+import song7 from '../assets/song/7.mp3'
+import song8 from '../assets/song/8.mp3'
+import song9 from '../assets/song/9.mp3'
+import song10 from '../assets/song/10.mp3'
+import song11 from '../assets/song/11.mp3'
+import song12 from '../assets/song/12.mp3'
+import song13 from '../assets/song/13.mp3'
+import song14 from '../assets/song/14.mp3'
+import song15 from '../assets/song/15.mp3'
+import song16 from '../assets/song/16.mp3'
+import song17 from '../assets/song/17.mp3'
+import song18 from '../assets/song/18.mp3'
+import song19 from '../assets/song/19.mp3'
+import song20 from '../assets/song/20.mp3'
+import song21 from '../assets/song/21.mp3'
+import song22 from '../assets/song/22.mp3'
 
 export default {
   data() {
     return {
-      playlist: [song1, song2, song3],
+      playlist: [
+        song1,
+        song2,
+        song3,
+        song4,
+        song5,
+        song6,
+        song7,
+        song8,
+        song9,
+        song10,
+        song11,
+        song12,
+        song13,
+        song14,
+        song15,
+        song16,
+        song17,
+        song18,
+        song19,
+        song20,
+        song21,
+        song22
+      ],
       currentSong: '',
       currentSongIndex: -1,
       currentTime: 0,
       duration: 0,
       sw: false,
-      pauseTime: 0
+      pauseTime: 0,
+      music: { volume: 0.5 }
     }
   },
   methods: {
@@ -74,6 +120,7 @@ export default {
       if (this.currentSongIndex >= this.playlist.length) {
         // 플레이리스트의 끝에 도달하면 처음 노래로 돌아갑니다.
         this.currentSongIndex = 0
+        this.currentTime = 0
       }
       this.playCurrentSong()
     },
@@ -97,6 +144,7 @@ export default {
       if (this.currentSongIndex < 0) {
         // 현재 노래가 첫 번째 노래인 경우, 마지막 노래로 이동합니다.
         this.currentSongIndex = this.playlist.length - 1
+        this.currentTime = 0
       }
       this.playCurrentSong()
     },
@@ -106,8 +154,16 @@ export default {
       if (this.currentSongIndex >= this.playlist.length) {
         // 플레이리스트의 끝에 도달하면 처음 노래로 돌아갑니다.
         this.currentSongIndex = 0
+        this.currentTime = 0
       }
       this.playCurrentSong()
+    },
+    setVolume: function () {
+      const audioPlayer = this.$refs.audioPlayer
+      const music = this.music
+
+      // 음량 설정
+      audioPlayer.volume = music.volume
     }
   }
 }

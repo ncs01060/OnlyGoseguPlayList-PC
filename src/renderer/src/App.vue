@@ -5,7 +5,6 @@ import songs from './components/songs.json'
 </script>
 
 <template>
-  <img src="./assets/icons.svg" />
   <List />
   <Footers />
 </template>
