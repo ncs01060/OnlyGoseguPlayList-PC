@@ -52,6 +52,8 @@ import song19 from '../assets/song/19.mp3'
 import song20 from '../assets/song/20.mp3'
 import song21 from '../assets/song/21.mp3'
 import song22 from '../assets/song/22.mp3'
+import song23 from '../assets/song/23.mp3'
+import song24 from '../assets/song/24.mp3'
 
 export default {
   data() {
@@ -78,7 +80,9 @@ export default {
         song19,
         song20,
         song21,
-        song22
+        song22,
+        song23,
+        song24
       ],
       currentSong: '',
       currentSongIndex: -1,
